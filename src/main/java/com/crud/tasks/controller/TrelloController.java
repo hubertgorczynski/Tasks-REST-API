@@ -22,19 +22,6 @@ public class TrelloController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
-
-        // Exercise 22.2 - modified
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.stream()
-                .filter(board -> !StringUtils.isEmpty(board.getId()) && !StringUtils.isEmpty(board.getName()))
-                .filter(board -> !board.getId().isEmpty() && !board.getName().isEmpty())
-                .filter(board -> board.getName().contains("Kodilla"))
-                .forEach(trelloBoardDto ->
-                        System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
-
-
-        /* Current Submodule 22.3
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         trelloBoards.forEach(trelloBoardDto -> {
@@ -43,14 +30,23 @@ public class TrelloController {
             trelloBoardDto.getLists().forEach(trelloList ->
                     System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
         });
-
-         */
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-
         return trelloClient.createNewCard(trelloCardDto);
     }
 
+    /* Exercise 22.2
+    @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
+    public void getTrelloBoards() {
+        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+
+        trelloBoards.stream()
+                .filter(board -> !StringUtils.isEmpty(board.getId()) && !StringUtils.isEmpty(board.getName()))
+                .filter(board -> board.getName().contains("Kodilla"))
+                .forEach(trelloBoardDto ->
+                        System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+    }
+    */
 }
