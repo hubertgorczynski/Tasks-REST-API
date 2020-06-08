@@ -34,14 +34,10 @@ public class TrelloClient {
     private RestTemplate restTemplate;
 
     public List<TrelloBoardDto> getTrelloBoards() {
-
         URI url = getTrelloBoardsUri();
 
-        Optional<TrelloBoardDto[]> boardsResponse =
-                Optional.ofNullable(restTemplate.getForObject(url, TrelloBoardDto[].class));
-
-        return boardsResponse.map(Arrays::asList).orElseGet(ArrayList::new);
-
+        return Optional.ofNullable(restTemplate.getForObject(url, TrelloBoardDto[].class))
+                .map(Arrays::asList).orElseGet(ArrayList::new);
     }
 
     private URI getTrelloBoardsUri() {
@@ -68,5 +64,4 @@ public class TrelloClient {
         return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
 
     }
-
 }
