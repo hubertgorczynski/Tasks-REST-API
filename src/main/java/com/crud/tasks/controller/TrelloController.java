@@ -4,7 +4,7 @@ import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.client.TrelloClient;
-import com.mysql.cj.util.StringUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class TrelloController {
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         trelloBoards.stream()
-                .filter(board -> !StringUtils.isNullOrEmpty(board.getId()) && !StringUtils.isNullOrEmpty(board.getName()))
+                .filter(board -> !StringUtils.isEmpty(board.getId()) && !StringUtils.isEmpty(board.getName()))
                 .filter(board -> !board.getId().isEmpty() && !board.getName().isEmpty())
                 .filter(board -> board.getName().contains("Kodilla"))
                 .forEach(trelloBoardDto ->
