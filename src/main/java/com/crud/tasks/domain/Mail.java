@@ -1,8 +1,8 @@
 package com.crud.tasks.domain;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
@@ -10,14 +10,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Mail {
 
-    @NotNull
-    private String mailTo;
+    @NonNull
+    private final String mailTo;
 
     private String toCc;
 
-    @NotNull
-    private String subject;
+    @NonNull
+    private final String subject;
 
-    @NotNull
-    private String message;
+    @NonNull
+    private final String message;
 }
