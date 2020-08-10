@@ -20,10 +20,12 @@ dependencies {
     implementation('mysql:mysql-connector-java')
     annotationProcessor('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    implementation('io.springfox:springfox-swagger2:2.7.0')
-    implementation('io.springfox:springfox-swagger-ui:2.7.0')
     implementation('org.springframework.boot:spring-boot-starter-mail:2.3.2.RELEASE')
     implementation('com.google.code.gson:gson:2.8.6')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    // Swagger
+    implementation('io.springfox:springfox-swagger2:2.7.0')
+    implementation('io.springfox:springfox-swagger-ui:2.7.0')
     //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat") - committed for Heroku
     //implementation('org.postgresql:postgresql') - committed for Heroku database
     //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat") - committed for Heroku
