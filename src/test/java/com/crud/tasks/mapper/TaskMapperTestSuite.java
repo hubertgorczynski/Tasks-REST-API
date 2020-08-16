@@ -53,8 +53,6 @@ public class TaskMapperTestSuite {
     public void mapTaskDtoListTest() {
         //Given
         TaskDto taskDto = new TaskDto(1L, "title", "content");
-        List<TaskDto> taskDtoList = Arrays.asList(taskDto);
-
         Task task = new Task(1L, "title", "content");
         List<Task> taskList = Arrays.asList(task);
 
