@@ -17,7 +17,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.projectlombok:lombok')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    //implementation('mysql:mysql-connector-java')
+    implementation('mysql:mysql-connector-java')
     annotationProcessor('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     implementation('org.springframework.boot:spring-boot-starter-mail:2.3.2.RELEASE')
@@ -27,7 +27,7 @@ dependencies {
     implementation('io.springfox:springfox-swagger2:2.7.0')
     implementation('io.springfox:springfox-swagger-ui:2.7.0')
     //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat") - committed for Tomcat
-    implementation('org.postgresql:postgresql')
+    //implementation('org.postgresql:postgresql') - committed for Heroku
 }
 
 test {
