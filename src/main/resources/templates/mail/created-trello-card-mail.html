@@ -141,8 +141,8 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            GOODBYE_MESSAGE</p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"
+                                           th:text="${goodbye_message}"></p>
                                     </td>
                                 </tr>
                             </table>
@@ -159,7 +159,12 @@
                         <tr>
                             <td class="content-block"
                                 style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">COMPANY_DETAILS</span>
+                                <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Best regards from: <span
+                                        th:text="${company_name}"></span>
+                                    <br> You can reach us by phone: <span
+                                            th:text="${company_phone}"></span> or email: <span
+                                            th:text="${company_email}"></span>
+                                </span>
                             </td>
                         </tr>
                     </table>
