@@ -103,7 +103,7 @@
 
                 <!-- START CENTERED WHITE CONTAINER -->
                 <span class="preheader"
-                      style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">PREVIEW_MESSAGE</span>
+                      style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;" th:text="${preview_message}"></span>
                 <table class="main"
                        style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
 
@@ -115,8 +115,14 @@
                                    style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            Dear <span th:text="${admin_name}"></span>,</p>
+                                        <p th:if="${is_friend}"
+                                           style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                                            Yo <span th:text="${admin_config.getAdminName()}"></span>,</p>
+
+                                        <p th:unless="${is_friend}"
+                                           style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                                            Dear <span th:text="${admin_config.getAdminName()}"></span>,</p>
+
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"
                                            th:text="${message}"></p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary"
@@ -125,7 +131,8 @@
                                             <tr>
                                                 <td align="left"
                                                     style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
-                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                    <table th:if="${show_button}" border="0" cellpadding="0"
+                                                           cellspacing="0"
                                                            style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                                                         <tbody>
                                                         <tr>
@@ -160,10 +167,10 @@
                             <td class="content-block"
                                 style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
                                 <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Best regards from: <span
-                                        th:text="${company_name}"></span>
+                                        th:text="${company_config.getCompanyName()}"></span>
                                     <br> You can reach us by phone: <span
-                                            th:text="${company_phone}"></span> or email: <span
-                                            th:text="${company_email}"></span>
+                                            th:text="${company_config.getCompanyPhone()}"></span> or email: <span
+                                            th:text="${company_config.getCompanyMail()}"></span>
                                 </span>
                             </td>
                         </tr>
