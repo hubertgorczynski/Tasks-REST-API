@@ -6,7 +6,6 @@ import com.crud.tasks.repository.TaskRepository;
 import com.crud.tasks.service.MailCreatorService;
 import com.crud.tasks.service.SimpleEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -37,14 +36,14 @@ public class EmailScheduler {
     //@Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
-        simpleEmailService.send(new Mail(
+        simpleEmailService.sendMailMessage(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
                 "Currently in database you got: " + size + getTaskOrTasksString())
         );
     }
 
-    @Scheduled(cron = "0 0 8 * * *")
+    //@Scheduled(cron = "0 0 8 * * *")
     public void sendDailyMail() {
         long size = taskRepository.count();
         String message = "Currently in database you got: " + size + getTaskOrTasksString();

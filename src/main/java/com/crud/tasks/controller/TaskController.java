@@ -17,18 +17,18 @@ public class TaskController {
     @Autowired
     private TaskMapper taskMapper;
 
-    @GetMapping(value = "tasks")
+    @GetMapping(value = "/tasks")
     public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 
-    @GetMapping(value = "task")
-    public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException {
+    @GetMapping(value = "/task/{taskId}")
+    public TaskDto getTask(@PathVariable Long taskId) throws TaskNotFoundException {
         return taskMapper.mapToTaskDto(service.getTask(taskId).orElseThrow(TaskNotFoundException::new));
     }
 
-    @DeleteMapping(value = "task")
-    public void deleteTask(@RequestParam Long taskId) throws TaskNotFoundException {
+    @DeleteMapping(value = "/task/{taskId}")
+    public void deleteTask(@PathVariable Long taskId) throws TaskNotFoundException {
         if (service.getTask(taskId).isPresent()) {
             service.deleteTask(taskId);
         } else {
@@ -36,12 +36,12 @@ public class TaskController {
         }
     }
 
-    @PutMapping(value = "task")
+    @PutMapping(value = "/task")
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
 
-    @PostMapping(value = "task")
+    @PostMapping(value = "/task")
     public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
