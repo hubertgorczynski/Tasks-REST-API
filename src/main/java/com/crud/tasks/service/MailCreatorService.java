@@ -25,7 +25,7 @@ public class MailCreatorService {
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
 
-    public String buildTrelloCardEmail(String message) {
+    public String buildTrelloDailyEmail(String message, String previewMessage) {
 
         List<String> functionality = new ArrayList<>();
         functionality.add("You can manage your tasks");
@@ -33,7 +33,7 @@ public class MailCreatorService {
         functionality.add("Application allows sending tasks to Trello");
 
         Context context = new Context();
-        context.setVariable("preview_message", "Trello app - new card added");
+        context.setVariable("preview_message", previewMessage);
         context.setVariable("message", message);
         context.setVariable("tasks_url", "http://localhost:8888/tasks_frontend");
         context.setVariable("button", "Visit website");
