@@ -40,7 +40,7 @@ public class EmailScheduler {
         );
     }
 
-    @Scheduled(cron = "* * 6 * * *")
+    //@Scheduled(cron = "* * 6 * * *")
     public void sendDailyMail() {
         long size = taskRepository.count();
         String message = "Currently in database You got: " + size + getTaskOrTasksString();
