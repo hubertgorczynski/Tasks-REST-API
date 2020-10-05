@@ -1,8 +1,6 @@
 # Tasks-REST-API
 REST-API created during Kodilla course.
 
-### This repository contains exercise from Kodilla course. 
-
 ### Description:
 This is REST API for management daily tasks. It uses standard HTTP methods like: GET, PUT, POST and DELETE.  Application is deployed also on Heroku server - https://hubertgorczynski.github.io/
 
